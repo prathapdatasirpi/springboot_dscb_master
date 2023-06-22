@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/dschatbox
+    username: prathap
+    password: ThePassword
+    driverClassName: com.mysql.cj.jdbc.Driver
+
+server:
+  port: 9085
+
+  servlet:
+    context-path: /dschatbox
+
+dependency:
+  groupId: org.springframework.boot
+  artifactId: spring-boot-starter-security
+
+# 7 days expiry duration
+expiry-duration: 604800
+jwt-secret-key: "DATASIRPI_CHAT_BOX"
