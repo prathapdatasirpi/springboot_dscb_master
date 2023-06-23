@@ -25,16 +25,7 @@ public class JwtInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception  {
-        System.out.println("---PRE_HANDLE Request for the Endpoint("+request.getRequestURI()+")---by JASBER_INTERCEPTOR---");
         String endPoint = request.getRequestURI();
-//        if(!(endPoint.contains("login") || endPoint.contains("signup") || endPoint.contains("error"))){
-//            String auth = request.getHeader("Authorization");
-//            if (auth != null){
-//                Claims claims = jwtUtils.verifyAccessToken(auth);
-//                requestMeta.setUserId(Integer.parseInt(claims.getIssuer()));
-//                requestMeta.setUserMail(claims.get("userMail").toString());
-//            }
-//        }
         return super.preHandle(request, response, handler);
     }
 }

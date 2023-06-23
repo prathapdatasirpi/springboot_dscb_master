@@ -1,7 +1,5 @@
 package com.datasirpi.dschatbox.utils;
 
-import com.datasirpi.dschatbox.common.AccessDeniedException;
-import com.datasirpi.dschatbox.entity.EmployeeEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -18,7 +16,7 @@ public class JwtUtils {
     @Value("${jwt-secret-key}")
     private String secret;
 
-    public String generateJwt(EmployeeEntity employeeEntity) {
+    public String generateJwt() {
 
         long milliTime = System.currentTimeMillis();
         long expiryTime = milliTime + expiryDuration * 1000;
@@ -28,12 +26,12 @@ public class JwtUtils {
 
         // claims
         Claims claims = Jwts.claims()
-                .setIssuer(String.valueOf(employeeEntity.getEmpId()))
+                .setIssuer(String.valueOf("employeeEntity"))
                 .setIssuedAt(issuedAt);
 //                .setExpiration(expiryAt);  //commented temporarily
 
         // set extra variables in token
-        claims.put("userMail", employeeEntity.getEmpMail());
+        claims.put("userMail", "employeeEntity");
 
         // generate jwt using claims
         return Jwts.builder()
@@ -49,7 +47,7 @@ public class JwtUtils {
             Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(accessToken[1]).getBody();
             return claims;
         } catch(Exception e) {
-            throw new AccessDeniedException("Access Denied");
+            throw new Exception("Access Denied");
         }
     }
 }
