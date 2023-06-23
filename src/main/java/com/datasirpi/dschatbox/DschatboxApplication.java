@@ -14,7 +14,6 @@ public class DschatboxApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		SpringApplication.run(DschatboxApplication.class, args);
 	}
-
 	@Bean
 	public BCryptPasswordEncoder bCryptPasswordEncoder() {
 		return new BCryptPasswordEncoder();
